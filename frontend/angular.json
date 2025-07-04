@@ -28,13 +28,10 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            
             ,"outputPath": "dist/frontend"
-            ,"baseHref": "/"
-            ,"deployUrl": "/"
+            ,"baseHref": "/matthisdom.github.io/"
+            ,"deployUrl": "/matthisdom.github.io/"
           },
           "configurations": {
             "production": {
