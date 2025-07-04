@@ -1,12 +1,3 @@
 {
-  "routes": {
-    "/": {},
-    "/admin": {},
-    "/admin-miage-2003-directive": {},
-    "/contact": {},
-    "/devis": {},
-    "/mentions-legales": {},
-    "/presentation": {},
-    "/projets": {}
-  }
+  "routes": {}
 }
