@@ -1,0 +1,27 @@
+.value-card
+{
+    color: white;
+    background-color: var(--primary-color);
+    padding: 20px;
+    width: 200px;
+    height: 200px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 1vw;
+    transition: all 0.3s ease-in-out;
+}
+
+.value-card img
+{
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.value-card:hover
+{
+    scale: 1.05;
+    cursor: pointer;
+}

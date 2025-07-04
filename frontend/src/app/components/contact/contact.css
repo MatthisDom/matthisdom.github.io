@@ -1,0 +1,39 @@
+/* Correction contraste popup MapLibre */
+.maplibregl-popup-content {
+  color: #252052 !important;
+  font-weight: 600;
+}
+.maplibregl-popup-tip {
+  border-top-color: #fff !important;
+}
+/* Correction interactivité MapLibre dans un conteneur Bootstrap ratio */
+#maplibre-map {
+  min-height: 300px;
+  height: 100% !important;
+  width: 100% !important;
+  position: relative;
+}
+textarea
+{
+    resize: none;
+    height: 150px;
+}
+
+.map-contact
+{
+    background-color: var(--primary-color);
+}
+
+.btn-contact
+{
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+}
+
+.btn-contact:hover
+{
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}

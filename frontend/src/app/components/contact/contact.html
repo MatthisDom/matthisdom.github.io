@@ -1,0 +1,52 @@
+<app-header></app-header>
+<div class="container-fluid py-5 mt-5 mb-5 justify-content-center d-flex"fadeInOnLoad>
+  <div class="row mx-0 bg-white shadow" style="max-width: 1000px; margin: auto; border-radius: 8px; overflow: hidden;">
+    
+    <!-- 🗺️ Carte à gauche -->
+    <div class="col-md-6 p-3 map-contact text-white d-flex flex-column justify-content-between">
+      <div class="mb-3">
+        <!-- Carte MapLibre GL JS -->
+        <div id="leaflet-map" class="mb-3 text-color-primary" style="min-height: 300px; border-radius: 8px; outline: none; height: 300px; width: 100%;" role="region" aria-label="Carte interactive de localisation de Junior MIAGE Concept Nice. Le marqueur indique le campus SophiaTech à Biot." tabindex="0"></div>
+      </div>
+      <!-- Coordonnées -->
+      <div class="text-white small d-flex flex-column">
+        <p><i class="bi bi-telephone-fill"></i> 04 89 15 42 31</p>
+        <p><i class="bi bi-envelope-fill"></i> contact&#64;juniormiageconcept.com</p>
+        <p><i class="bi bi-geo-alt-fill"></i> 1645 Route des Lucioles, 06410 Biot</p>
+      </div>
+    </div>
+
+    <!-- 📩 Formulaire à droite -->
+    <div class="col-md-6 p-4 bg-light">
+      <h2 class="text-center fw-bold text-color-primary mb-4">Contact</h2>
+      <form>
+        <div class="row mb-3">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Nom *" required>
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Prénom" required>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <input type="email" class="form-control" placeholder="Mail *" required>
+          </div>
+          <div class="col">
+            <input type="tel" class="form-control" placeholder="Téléphone">
+          </div>
+        </div>
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Sujet *" required>
+        </div>
+        <div class="mb-3">
+          <textarea class="form-control" rows="4" placeholder="Votre message..." required></textarea>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-contact px-4">Envoyer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

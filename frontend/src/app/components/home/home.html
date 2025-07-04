@@ -1,0 +1,309 @@
+<app-header></app-header>
+<main>
+    <section id="hero"  class="d-flex my-5 bg-color-secondary">
+        <div class="container py-5"fadeInOnLoad>
+            <div class="row align-items-center">
+                <!-- Texte -->
+                <div class="col-md-6">
+                <h2 class="fw-bold text-color-primary">
+                    Faites de vos projets une <br />
+                    réalité avec un regard neuf.
+                </h2>
+                <p class="text-muted mt-3">
+                    Des <strong>étudiants engagés</strong>, des <strong>idées fraîches</strong> et
+                    des <strong>solutions concrètes</strong> pour <strong>faire avancer vos projets avec rigueur et créativité</strong>.
+                </p>
+                <div class="d-flex gap-2 flex-wrap mt-3 my-5">
+                    <a routerLink="./devis" class="btn btn-JMC px-4 py-2">faire un devis</a>
+                    <a class="btn btn-plaquette px-4 py-2" target="_blank" href="./assets/pdf/Plaquette_Commerciale_2025_JMC.pdf">Notre plaquette commerciale</a>
+                </div>
+                
+            </div>
+
+                <!-- Image -->
+            <div class="col-md-6 text-center zoom-wrapper">
+                <img src="./assets/image/hero-img.jpg" alt="Entretien client" class="img-fluid rounded zoom-hover">
+            </div>
+        </div>
+
+            <div class="row text-center mt-5 justify-content-around">
+                <div class="col-6 col-md-3 mb-3">
+                    <strong [appCountUp]="90"></strong>%<br>clients satisfaits
+                </div>
+                <div class="col-6 col-md-3 mb-3">
+                    <strong [appCountUp]="150"></strong><br>développeurs potentiels
+                </div>
+                <div class="col-6 col-md-3 mb-3">
+                    <strong [appCountUp]="17"></strong> ans<br>d'expérience
+                </div>
+                <div class="col-6 col-md-3 mb-3">
+                    <strong [appCountUp]="5"></strong> ans<br>dans le top 30 JE France
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="services" class="d-flex flex-column align-items-center justify-content-center mb-4">
+        <h1 class="text-color-primary pb-5"appFadeInOnScroll>Nos prestations</h1>
+        <p class="text-center mb-5">Des solutions pensées pour propulser votre activité.</p>
+        
+        <div class="container-fluid">
+            <div class="container py-5 my-5"appLeftFadeInOnScroll>
+                <div class="row align-items-center g-5">
+                <!-- Texte -->
+                    <div class="col-md-6">
+                        <h2 class="mb-4 fw-bold">Créez une présence numérique forte et évolutive</h2>
+                        <ul class="list-unstyled lh-lg">
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Applications web full stack modernes</li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Progressive Web Apps</li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Applications mobiles : e-commerce, messagerie, paiement</li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Référencement naturel SEO</li>
+                        </ul>
+                    </div>
+
+                <!-- Image ou visuel -->
+                    <div class="col-md-6">
+                        <div class="zoom-wrapper rounded overflow-hidden shadow-sm">
+                        <img src="./assets/image/services/presence_numerique.webp" alt="Présence numérique" class="img-fluid zoom-hover" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container py-5 my-5"appRightFadeInOnScroll>
+                <div class="row align-items-center g-5">
+
+                <!-- Image ou visuel -->
+                    <div class="col-md-6">
+                        <div class="zoom-wrapper rounded overflow-hidden shadow-sm">
+                        <img src="./assets/image/services/cybersecurite.webp" alt="cybersecurite" class="img-fluid zoom-hover" />
+                        </div>
+                    </div>
+                <!-- Texte -->
+                    <div class="col-md-6 overflow-hidden">
+                        <h2 class="mb-4 fw-bold">Optimiser et sécurisez votre système</h2>
+                        <ul class="list-unstyled lh-lg">
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Audit de site web (performance, UX, SEO)</li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Audit de sécurité et conformité (RGPD, ISO)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container py-5 my-5"appLeftFadeInOnScroll>
+                <div class="row align-items-center g-5">
+                <!-- Texte -->
+                    <div class="col-md-6">
+                        <h2 class="mb-4 fw-bold">Donnez de la clarté à vos ambitions</h2>
+                        <ul class="list-unstyled lh-lg">
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i> Cahier des charges</li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Recueil des besoins utilisateurs</li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Spécifications fonctionnelles</li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Conseil en choix technologiques</li>
+                        </ul>
+                    </div>
+
+                <!-- Image ou visuel -->
+                    <div class="col-md-6">
+                        <div class="zoom-wrapper rounded shadow-sm">
+                        <img src="./assets/image/services/cahier_charge.webp" alt="Présence numérique" class="img-fluid zoom-hover" />
+                        </div>
+                    </div>
+                </div>
+            </div>   
+            
+            <div class="container py-5 my-4">
+                <div class="row align-items-center g-5"appRightFadeInOnScroll>
+
+                <!-- Image ou visuel -->
+                    <div class="col-md-6">
+                        <div class="zoom-wrapper rounded overflow-hidden shadow-sm">
+                        <img src="./assets/image/services/intelligence_artificiel.webp" alt="Présence numérique" class="img-fluid zoom-hover" />
+                        </div>
+                    </div>
+                <!-- Texte -->
+                    <div class="col-md-6 overflow-hidden">
+                        <h2 class="mb-4 fw-bold">Mettez l’intelligence artificiel au service de votre business</h2>
+                        <ul class="list-unstyled lh-lg">
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Intégration d’IA générative</li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Data visualisation interactive</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section id="team" class="d-flex flex-column align-items-center justify-content-center mb-4">
+        <h1 class="text-color-primary pb-5" appFadeInOnScroll>Notre équipe</h1>
+        <!-- Carrousel desktop -->
+        <div id="carousel_team_desktop" appBottomFadeInOnScroll class="carousel slide container d-none d-lg-block" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="d-flex justify-content-center gap-4">
+                        <team-card name="Jean Dupont" JMCrole="Développeur Full Stack" image="./assets/image/team/jean-dupont.jpg" linkedin="https://www.linkedin.com/in/jean-dupont"></team-card>
+                        <team-card name="Marie Curie" JMCrole="Chef de Projet" image="./assets/image/team/marie-curie.jpg" linkedin="https://www.linkedin.com/in/marie-curie"></team-card>
+                        <team-card name="Pierre Martin" JMCrole="Designer UI/UX" image="./assets/image/team/pierre-martin.jpg" linkedin="https://www.linkedin.com/in/pierre-martin"></team-card>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center gap-4">
+                        <team-card name="Sophie Durand" JMCrole="Analyste Fonctionnel" image="./assets/image/team/sophie-durand.jpg" linkedin="https://www.linkedin.com/in/sophie-durand"></team-card>
+                        <team-card name="Lucas Bernard" JMCrole="Développeur Mobile" image="./assets/image/team/lucas-bernard.jpg" linkedin="https://www.linkedin.com/in/lucas-bernard"></team-card>
+                        <team-card name="Emma Lefevre" JMCrole="Testeur QA" image="./assets/image/team/emma-lefevre.jpg" linkedin="https://www.linkedin.com/in/emma-lefevre"></team-card>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel_team_desktop" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Précédent</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel_team_desktop" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Suivant</span>
+            </button>
+        </div>
+        <!-- Carrousel mobile -->
+        <div id="carousel_team_mobile" class="carousel slide container d-block d-lg-none" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active justify-content-center">
+                    <team-card name="Jean Dupont" JMCrole="Développeur Full Stack" image="./assets/image/team/jean-dupont.jpg" linkedin="https://www.linkedin.com/in/jean-dupont"></team-card>
+                </div>
+                <div class="carousel-item justify-content-center">
+                    <team-card name="Marie Curie" JMCrole="Chef de Projet" image="./assets/image/team/marie-curie.jpg" linkedin="https://www.linkedin.com/in/marie-curie"></team-card>
+                </div>
+                <div class="carousel-item justify-content-center">
+                    <team-card name="Pierre Martin" role="Designer UI/UX" image="./assets/image/team/pierre-martin.jpg" linkedin="https://www.linkedin.com/in/pierre-martin"></team-card>
+                </div>
+                <div class="carousel-item justify-content-center">
+                    <team-card name="Sophie Durand" JMCrole="Analyste Fonctionnel" image="./assets/image/team/sophie-durand.jpg" linkedin="https://www.linkedin.com/in/sophie-durand"></team-card>
+                </div>
+                <div class="carousel-item justify-content-center">
+                    <team-card name="Lucas Bernard" JMCrole="Développeur Mobile" image="./assets/image/team/lucas-bernard.jpg" linkedin="https://www.linkedin.com/in/lucas-bernard"></team-card>
+                </div>
+                <div class="carousel-item justify-content-center">
+                    <team-card name="Emma Lefevre" JMCrole="Testeur QA" image="./assets/image/team/emma-lefevre.jpg" linkedin="https://www.linkedin.com/in/emma-lefevre"></team-card>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel_team_mobile" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Précédent</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel_team_mobile" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Suivant</span>
+            </button>
+        </div>
+    </section>
+
+    <section id="clients-revue" class="d-flex flex-column align-items-center justify-content-center">
+        <h1 class="text-color-primary fade-in pb-5"appFadeInOnScroll>Nos clients témoignent</h1>
+        <div class="container d-flex flex-wrap space-between justify-content-around mt-5">
+            
+            <div class="position-relative d-flex flex-column align-items-center"appLeftFadeInOnScroll style="margin-bottom: 40px;">
+            <img src="./assets/image/martin-f-pic.webp" alt="icone martin F" class="rounded-circle position-absolute client-photo" style="top: -50px; width: 100px; height: 100px; object-fit: cover;">
+            <div class="card text-center pt-5 pb-5 px-3" style="width: 100%; max-width: 300px; z-index: 1;">
+                <div class="card-body">
+                    <span class="fw-bold text-color-primary mb-1 mt-4">Martin F.</span>
+                    <p class="fst-italic text-uppercase small mb-2">"UN RAPPORT QUALITÉ PRIX INDÉNIABLE"</p>
+                    <p class="card-text small">
+                        Junior MIAGE Concept a répondu à notre problématique tout en ayant un prix très attractif.
+                        J’ai été très surpris de la qualité du livrable rendu et du professionnalisme de cette équipe.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Icône like qui dépasse en bas --> 
+            <div class="position-relative">
+                <div class="bg-light rounded-circle d-flex align-items-center justify-content-center client-like">
+                    <i class="bi bi-hand-thumbs-up text-primary fs-4"></i>
+                </div>
+            </div>  
+
+        </div>
+            <div class="position-relative d-flex flex-column align-items-center"appBottomFadeInOnScroll style="margin-bottom: 40px;">
+            <img src="./assets/image/monte-cuisto-pic.webp" alt="icone monte-cuisto" class="rounded-circle position-absolute client-photo" style="top: -50px; width: 100px; height: 100px; object-fit: cover;">
+            <div class="card text-center pt-5 pb-5 px-3" style="width: 100%; max-width: 300px; z-index: 0;">
+                <div class="card-body">
+                    <span class="fw-bold text-color-primary mb-1 mt-4">Monte-cuisto</span>
+                    <p class="fst-italic text-uppercase small mb-2">"SOURCE DE LA RÉUSSITE DU PROJET"</p>
+                    <p class="card-text small">
+                        Une très bonne compréhension et curiosité du fonctionnel métier par l'intervenant de Junior MIAGE Concept a été source de la pleine réussite de mon projet, Merci à vous !
+                    </p>
+                </div>
+            </div>
+
+            <!-- Icône like qui dépasse en bas --> 
+            <div class="position-relative">
+                <div class="bg-light rounded-circle d-flex align-items-center justify-content-center client-like">
+                    <i class="bi bi-hand-thumbs-up text-primary fs-4"></i>
+                </div>
+            </div>
+        </div>
+
+            <div class="position-relative d-flex flex-column align-items-center"appRightFadeInOnScroll style="margin-bottom: 40px;">
+            <img src="./assets/image/chr-hansen-pic.webp" alt="icone chr hansen" class="rounded-circle position-absolute client-photo" style="top: -50px; width: 100px; height: 100px; object-fit: cover;">
+            <div class="card text-center pt-5 pb-5 px-3" style="width: 100%; max-width: 300px; z-index: 1;">
+                <div class="card-body">
+                    <span class="fw-bold text-color-primary mb-1 mt-4">Chr. Hansen</span>
+                    <p class="fst-italic text-uppercase small mb-2">"PROFESSIONALISME ET ADAPTABILITÉ"</p>
+                    <p class="card-text small">
+                        JMC Nice a su prendre pleinement en main le projet de la division couleur CHR Hansen. Ils ont fait preuve de réactivité, professionnalisme et d’adaptabilité tout au long de l’étude ce qui en a fait une réussite. Merci à vous !
+                    </p>
+                </div>
+            </div>
+
+            <div class="position-relative">
+                <div class="bg-light rounded-circle client-like d-flex align-items-center justify-content-center">
+                    <i class="bi bi-hand-thumbs-up text-primary fs-4"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+<section id="partenaires" class="d-flex flex-column align-items-center justify-content-center mb-5">
+        <h1 class="text-color-primary fade-in pb-5" appFadeInOnScroll>Nos partenaires</h1>
+        <div id="carousel_partenaires" class="carousel slide container" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="d-flex justify-content-center align-items-center gap-4" style="height: 120px;">
+                        <img src="assets/image/partenaires/JE-Logo-2.png" class="carousel-logo" alt="Junior Entreprise">
+                        <img src="assets/image/partenaires/LOGO_MIAGE.png" class="carousel-logo" alt="Partenaire 2">
+                        <img src="assets/image/partenaires/logo-ds4h.png" class="carousel-logo" alt="Partenaire 3">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center align-items-center gap-4" style="height: 120px;">
+                        <img src="assets/image/partenaires/logo_amadeus.png" class="carousel-logo" alt="Partenaire 4">
+                        <img src="assets/image/partenaires/logo_fortinet.png" class="carousel-logo" alt="Partenaire 5">
+                        <img src="assets/image/partenaires/logo-jci.png" class="carousel-logo" alt="Partenaire 6">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center align-items-center gap-4" style="height: 120px;">
+                        <img src="assets/image/partenaires/logo_JEENISo.png" class="carousel-logo" alt="Partenaire 4">
+                        <img src="assets/image/partenaires/logo_JENIT.png" class="carousel-logo" alt="Partenaire 5">
+                        <img src="assets/image/partenaires/Capgemini_Logo.png" class="carousel-logo" alt="Partenaire 6">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center align-items-center gap-4" style="height: 120px;">
+                        <img src="assets/image/partenaires/bnpp.png" class="carousel-logo" alt="Partenaire 4">
+                        <img src="assets/image/partenaires/Logo-engie.svg" class="carousel-logo" alt="Partenaire 5">
+                        <img src="assets/image/partenaires/EY_logo_2019.png" class="carousel-logo" alt="Partenaire 6">
+                        <img src="assets/image/partenaires/ALTEN-Logo.png" class="carousel-logo" alt="logo alten">
+                    </div>
+                </div>
+            </div>  
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel_partenaires" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true" style="filter: invert(1) grayscale(1) brightness(0.3);"></span>
+                <span class="visually-hidden">Précédent</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel_partenaires" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true" style="filter: invert(1) grayscale(1) brightness(0.3);"></span>
+                <span class="visually-hidden">Suivant</span>
+            </button>
+        </div>
+    </section>
+</main>
+<app-footer></app-footer>

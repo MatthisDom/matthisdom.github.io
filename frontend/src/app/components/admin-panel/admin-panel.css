@@ -1,0 +1,76 @@
+/* Responsive table for devis section */
+.table-responsive 
+{
+  width: 100%;
+  overflow-x: auto;
+}
+
+table 
+{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td 
+{
+  padding: 0.75rem 0.5rem;
+  text-align: left;
+}
+
+@media (max-width: 600px) 
+{
+  th, td {
+    padding: 0.5rem 0.2rem;
+    font-size: 0.95em;
+  }
+  .table-responsive {
+    margin: 0 -10px;
+  }
+  table {
+    font-size: 0.95em;
+  }
+}
+.sidebar {
+    width: 220px;
+    color: white;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 60px;
+}
+.sidebar a {
+    display: block;
+    color: #adb5bd;
+    padding: 12px 20px;
+    text-decoration: none;
+}
+.sidebar a:hover,
+.sidebar a.active {
+    background-color: #495057;
+    color: #fff;
+}
+main 
+{
+    margin-left: 220px;
+}
+
+td span
+{
+    width: 9.5vw;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: inline-block;
+}
+
+@media screen and (max-width: 767px) 
+{
+  .sidebar 
+  {
+    display: none;
+  }
+  main 
+  {
+    margin-left: 0;
+  }
+}

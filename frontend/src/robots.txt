@@ -1,0 +1,5 @@
+user-agents:*
+Allow: /
+
+Disallow: /auth
+Disallow: /admin-miage-2003-directive

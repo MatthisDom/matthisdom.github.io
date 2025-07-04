@@ -1,0 +1,20 @@
+.desktop {
+    display: none;
+}
+
+
+.cadre 
+{
+    background-color: var(--primary-color);
+}
+@media (min-width: 1024px) 
+{
+    .desktop 
+    {
+        display: block;
+    }
+    .cadre
+    {
+        background-color: white;
+    }
+}

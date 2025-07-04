@@ -1,0 +1,429 @@
+<aside class="sidebar bg-color-primary" [appActiveSectionOnScroll]="['accueil','devis','equipe','projets','mentions-legales']" [offset]="120">
+    <h5 class="text-center mb-4">Admin Panel</h5>
+    <a href="#accueil" (click)="scrollTo('accueil'); $event.preventDefault()">Dashboard</a>
+    <a href="#devis" (click)="scrollTo('devis'); $event.preventDefault();">Devis</a> 
+    <a href="#equipe" (click)="scrollTo('equipe'); $event.preventDefault();">Equipe</a> 
+    <a href="#projets" (click)="scrollTo('projets'); $event.preventDefault();">Projets</a>    
+    <a href="#mentions-legales" (click)="scrollTo('mentions-legales'); $event.preventDefault();">Mentions légales</a>    
+</aside>
+
+  <!-- Main Content -->
+  <main>
+    <div>
+      <nav class="navbar py-2 bg-color-secondary">
+        <div class="container d-flex justify-content-end align-items-center gap-3">
+          <img src="https://via.placeholder.com/40" class="rounded-circle" alt="Avatar utilisateur" width="40" height="40">
+          <span class="fw-semibold">{{user}}</span>
+          <button class="btn btn-outline-light btn-danger">Se déconnecter</button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Contenu principal ici -->
+    <section class="container mt-4" id="accueil">
+      <h2>Bienvenue sur le tableau de bord</h2>
+      <p>Voici un exemple de contenu principal...</p>
+    </section>
+    <section class="container-fluid" id="devis">
+        <h2>Devis</h2>
+        <div class="table-responsive">
+            <table class="table table-striped align-middle">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Label</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of devisList">
+                        <td><span>{{item.id}}</span></td>
+                        <td><span>{{item.label}}</span></td>
+                        <td class="text-center">
+                            <button class="btn btn-link p-1" title="Éditer" (click)="openEditModal(item)"><i class="bi bi-pencil"></i></button>
+                            <button class="btn btn-link text-danger p-1" title="Supprimer" (click)="openDeleteModal(item)"><i class="bi bi-x-lg"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-center my-2">
+                <button class="btn btn-success align-middle" (click)="openAddDevisTypeModal()"><i class="bi bi-plus"></i></button>
+        <!-- Modal d'ajout type de devis -->
+        <div class="modal fade" id="addDevisTypeModal" tabindex="-1" aria-labelledby="addDevisTypeModalLabel" aria-hidden="true" [ngClass]="{'show d-block': showAddDevisTypeModal}" *ngIf="showAddDevisTypeModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addDevisTypeModalLabel">Ajouter un type de devis</h5>
+                        <button type="button" class="btn-close" aria-label="Close" (click)="closeAddDevisTypeModal()"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form (ngSubmit)="saveAddDevisType()">
+                            <div class="mb-3">
+                                <label for="addDevisTypeLabel" class="form-label">Label</label>
+                                <input type="text" class="form-control" id="addDevisTypeLabel" [(ngModel)]="addDevisTypeItem.label" name="addDevisTypeLabel" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                            <button type="button" class="btn btn-secondary ms-2" (click)="closeAddDevisTypeModal()">Annuler</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+        </div>
+
+        <!-- Modal de modification -->
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true" [ngClass]="{'show d-block': showEditModal}" *ngIf="showEditModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel">Modifier le devis</h5>
+                        <button type="button" class="btn-close" aria-label="Close" (click)="closeEditModal()"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form (ngSubmit)="saveEdit()">
+                            <div class="mb-3">
+                                <label for="editLabel" class="form-label">Label</label>
+                                <input type="text" class="form-control" id="editLabel" [(ngModel)]="editItem.label" name="editLabel">
+                            </div>
+                            <!-- Ajoutez d'autres champs si besoin -->
+                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                            <button type="button" class="btn btn-secondary ms-2" (click)="closeEditModal()">Annuler</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de suppression -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true" [ngClass]="{'show d-block': showDeleteModal}" *ngIf="showDeleteModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Confirmer la suppression</h5>
+                        <button type="button" class="btn-close" aria-label="Close" (click)="closeDeleteModal()"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Êtes-vous sûr de vouloir supprimer le devis <strong>{{deleteItem.label}}</strong> ?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" (click)="confirmDelete()">Supprimer</button>
+                        <button type="button" class="btn btn-secondary" (click)="closeDeleteModal()">Annuler</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-fluid" id="equipe">
+        <h2>Equipe</h2>
+        <div class="table-responsive">
+            <table class="table table-striped align-middle">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>nom</th>
+                        <th>prenom</th>
+                        <th>role</th>
+                        <th>image</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of equipeList | slice:(currentEquipePage-1)*5:(currentEquipePage)*5">
+                        <td><span>{{item.id}}</span></td>
+                        <td><span>{{item.nom}}</span></td>
+                        <td><span>{{item.prenom}}</span></td>
+                        <td><span>{{item.role}}</span></td>
+                        <td><span>{{item.image}}</span></td>
+                        <td class="text-center">
+                            <button class="btn btn-link p-1" title="Éditer" (click)="openEditEquipeModal(item)"><i class="bi bi-pencil"></i></button>
+                            <button class="btn btn-link text-danger p-1" title="Supprimer" (click)="openDeleteEquipeModal(item)"><i class="bi bi-x-lg"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-between align-items-center my-2">
+                <div>
+                    <nav aria-label="Pagination equipe">
+                        <ul class="pagination mb-0">
+                            <li class="page-item" [class.disabled]="currentEquipePage === 1">
+                                <button class="page-link" (click)="currentEquipePage = currentEquipePage - 1" [disabled]="currentEquipePage === 1">&laquo;</button>
+                            </li>
+                            <li class="page-item" *ngFor="let page of [].constructor(equipeTotalPages); let i = index" [class.active]="currentEquipePage === (i+1)">
+                                <button class="page-link" (click)="currentEquipePage = i+1">{{i+1}}</button>
+                            </li>
+                            <li class="page-item" [class.disabled]="currentEquipePage === equipeTotalPages">
+                                <button class="page-link" (click)="currentEquipePage = currentEquipePage + 1" [disabled]="currentEquipePage === equipeTotalPages">&raquo;</button>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <button class="btn btn-success align-middle" (click)="openAddEquipeModal()"><i class="bi bi-plus"></i></button>
+            </div>
+        </div>
+
+        <!-- Modal d'ajout équipe -->
+        <div class="modal fade" id="addEquipeModal" tabindex="-1" aria-labelledby="addEquipeModalLabel" aria-hidden="true" [ngClass]="{'show d-block': showAddEquipeModal}" *ngIf="showAddEquipeModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addEquipeModalLabel">Ajouter un membre</h5>
+                        <button type="button" class="btn-close" aria-label="Close" (click)="closeAddEquipeModal()"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form (ngSubmit)="saveAddEquipe()">
+                            <div class="mb-3">
+                                <label for="addNom" class="form-label">Nom</label>
+                                <input type="text" class="form-control" id="addNom" [(ngModel)]="addEquipeItem.nom" name="addNom">
+                            </div>
+                            <div class="mb-3">
+                                <label for="addPrenom" class="form-label">Prénom</label>
+                                <input type="text" class="form-control" id="addPrenom" [(ngModel)]="addEquipeItem.prenom" name="addPrenom">
+                            </div>
+                            <div class="mb-3">
+                                <label for="addRole" class="form-label">Rôle</label>
+                                <input type="text" class="form-control" id="addRole" [(ngModel)]="addEquipeItem.role" name="addRole">
+                            </div>
+                            <div class="mb-3">
+                                <label for="addImage" class="form-label">Image (URL ou fichier)</label>
+                                <input type="file" class="form-control mb-2" id="addImageFile" (change)="onAddEquipeFileChange($event)">
+                                <input type="text" class="form-control" id="addImage" [(ngModel)]="addEquipeItem.image" name="addImage" placeholder="Ou collez une URL">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                            <button type="button" class="btn btn-secondary ms-2" (click)="closeAddEquipeModal()">Annuler</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal d'édition équipe -->
+        <div class="modal fade" id="editEquipeModal" tabindex="-1" aria-labelledby="editEquipeModalLabel" aria-hidden="true" [ngClass]="{'show d-block': showEditEquipeModal}" *ngIf="showEditEquipeModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editEquipeModalLabel">Modifier le membre</h5>
+                        <button type="button" class="btn-close" aria-label="Close" (click)="closeEditEquipeModal()"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form (ngSubmit)="saveEditEquipe()">
+                            <div class="mb-3">
+                                <label for="editEquipeNom" class="form-label">Nom</label>
+                                <input type="text" class="form-control" id="editEquipeNom" [(ngModel)]="editEquipeItem.nom" name="editEquipeNom">
+                            </div>
+                            <div class="mb-3">
+                                <label for="editEquipePrenom" class="form-label">Prénom</label>
+                                <input type="text" class="form-control" id="editEquipePrenom" [(ngModel)]="editEquipeItem.prenom" name="editEquipePrenom">
+                            </div>
+                            <div class="mb-3">
+                                <label for="editEquipeRole" class="form-label">Rôle</label>
+                                <input type="text" class="form-control" id="editEquipeRole" [(ngModel)]="editEquipeItem.role" name="editEquipeRole">
+                            </div>
+                            <div class="mb-3">
+                                <label for="editEquipeImage" class="form-label">Image (URL ou fichier)</label>
+                                <input type="file" class="form-control mb-2" id="editEquipeImageFile" (change)="onEditEquipeFileChange($event)">
+                                <input type="text" class="form-control" id="editEquipeImage" [(ngModel)]="editEquipeItem.image" name="editEquipeImage" placeholder="Ou collez une URL">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                            <button type="button" class="btn btn-secondary ms-2" (click)="closeEditEquipeModal()">Annuler</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de suppression équipe -->
+        <div class="modal fade" id="deleteEquipeModal" tabindex="-1" aria-labelledby="deleteEquipeModalLabel" aria-hidden="true" [ngClass]="{'show d-block': showDeleteEquipeModal}" *ngIf="showDeleteEquipeModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteEquipeModalLabel">Confirmer la suppression</h5>
+                        <button type="button" class="btn-close" aria-label="Close" (click)="closeDeleteEquipeModal()"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Êtes-vous sûr de vouloir supprimer le membre <strong>{{deleteEquipeItem.nom}} {{deleteEquipeItem.prenom}}</strong> ?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" (click)="confirmDeleteEquipe()">Supprimer</button>
+                        <button type="button" class="btn btn-secondary" (click)="closeDeleteEquipeModal()">Annuler</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-fluid" id="projets">
+        <h2>Projets</h2>
+        <div class="table-responsive">
+            <table class="table table-striped align-middle">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>titre</th>
+                        <th>tag</th>
+                        <th>contenu</th>
+                        <th>image</th>
+                        <th>logo</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of projetsList | slice:(currentProjetPage-1)*10:(currentProjetPage)*10">
+                        <td><span>{{item.id}}</span></td>
+                        <td><span>{{item.titre}}</span></td>
+                        <td><span>{{item.tag}}</span></td>
+                        <td><span>{{item.contenu}}</span></td>
+                        <td><span>{{item.image}}</span></td>
+                        <td><span>{{item.logo}}</span></td>
+                        <td class="text-center">
+                            <button class="btn btn-link p-1" title="Éditer" (click)="openEditProjetModal(item)"><i class="bi bi-pencil"></i></button>
+                            <button class="btn btn-link text-danger p-1" title="Supprimer" (click)="openDeleteProjetModal(item)"><i class="bi bi-x-lg"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-between align-items-center my-2">
+                <div>
+                    <nav aria-label="Pagination projets">
+                        <ul class="pagination mb-0">
+                            <li class="page-item" [class.disabled]="currentProjetPage === 1">
+                                <button class="page-link" (click)="currentProjetPage = currentProjetPage - 1" [disabled]="currentProjetPage === 1">&laquo;</button>
+                            </li>
+                            <li class="page-item" *ngFor="let page of [].constructor(projetsTotalPages); let i = index" [class.active]="currentProjetPage === (i+1)">
+                                <button class="page-link" (click)="currentProjetPage = i+1">{{i+1}}</button>
+                            </li>
+                            <li class="page-item" [class.disabled]="currentProjetPage === projetsTotalPages">
+                                <button class="page-link" (click)="currentProjetPage = currentProjetPage + 1" [disabled]="currentProjetPage === projetsTotalPages">&raquo;</button>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <button class="btn btn-success align-middle" (click)="openAddProjetModal()"><i class="bi bi-plus"></i></button>
+            </div>
+        </div>
+
+        <!-- Modal d'ajout projet -->
+        <div class="modal fade" id="addProjetModal" tabindex="-1" aria-labelledby="addProjetModalLabel" aria-hidden="true" [ngClass]="{'show d-block': showAddProjetModal}" *ngIf="showAddProjetModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addProjetModalLabel">Ajouter un projet</h5>
+                        <button type="button" class="btn-close" aria-label="Close" (click)="closeAddProjetModal()"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form (ngSubmit)="saveAddProjet()">
+                            <div class="mb-3">
+                                <label for="addTitre" class="form-label">Titre</label>
+                                <input type="text" class="form-control" id="addTitre" [(ngModel)]="addProjetItem.titre" name="addTitre">
+                            </div>
+                            <div class="mb-3">
+                                <label for="addTag" class="form-label">Tag</label>
+                                <input type="text" class="form-control" id="addTag" [(ngModel)]="addProjetItem.tag" name="addTag">
+                            </div>
+                            <div class="mb-3">
+                                <label for="addContenu" class="form-label">Contenu</label>
+                                <textarea class="form-control" id="addContenu" [(ngModel)]="addProjetItem.contenu" name="addContenu"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="addImage" class="form-label">Image (URL ou fichier)</label>
+                                <input type="file" class="form-control mb-2" id="addImageFile" (change)="onAddProjetFileChange($event)">
+                                <input type="text" class="form-control" id="addImage" [(ngModel)]="addProjetItem.image" name="addImage" placeholder="Ou collez une URL">
+                            </div>
+                            <div class="mb-3">
+                                <label for="addLogo" class="form-label">Logo (URL ou fichier)</label>
+                                <input type="file" class="form-control mb-2" id="addLogoFile" (change)="onAddProjetLogoFileChange($event)">
+                                <input type="text" class="form-control" id="addLogo" [(ngModel)]="addProjetItem.logo" name="addLogo" placeholder="Ou collez une URL">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                            <button type="button" class="btn btn-secondary ms-2" (click)="closeAddProjetModal()">Annuler</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal d'édition projet -->
+        <div class="modal fade" id="editProjetModal" tabindex="-1" aria-labelledby="editProjetModalLabel" aria-hidden="true" [ngClass]="{'show d-block': showEditProjetModal}" *ngIf="showEditProjetModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editProjetModalLabel">Modifier le projet</h5>
+                        <button type="button" class="btn-close" aria-label="Close" (click)="closeEditProjetModal()"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form (ngSubmit)="saveEditProjet()">
+                            <div class="mb-3">
+                                <label for="editTitre" class="form-label">Titre</label>
+                                <input type="text" class="form-control" id="editTitre" [(ngModel)]="editProjetItem.titre" name="editTitre">
+                            </div>
+                            <div class="mb-3">
+                                <label for="editTag" class="form-label">Tag</label>
+                                <input type="text" class="form-control" id="editTag" [(ngModel)]="editProjetItem.tag" name="editTag">
+                            </div>
+                            <div class="mb-3">
+                                <label for="editContenu" class="form-label">Contenu</label>
+                                <textarea class="form-control" id="editContenu" [(ngModel)]="editProjetItem.contenu" name="editContenu"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editImage" class="form-label">Image (URL ou fichier)</label>
+                                <input type="file" class="form-control mb-2" id="editImageFile" (change)="onEditProjetFileChange($event)">
+                                <input type="text" class="form-control" id="editImage" [(ngModel)]="editProjetItem.image" name="editImage" placeholder="Ou collez une URL">
+                            </div>
+                            <div class="mb-3">
+                                <label for="editLogo" class="form-label">Logo (URL ou fichier)</label>
+                                <input type="file" class="form-control mb-2" id="editLogoFile" (change)="onEditProjetLogoFileChange($event)">
+                                <input type="text" class="form-control" id="editLogo" [(ngModel)]="editProjetItem.logo" name="editLogo" placeholder="Ou collez une URL">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                            <button type="button" class="btn btn-secondary ms-2" (click)="closeEditProjetModal()">Annuler</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de suppression projet -->
+        <div class="modal fade" id="deleteProjetModal" tabindex="-1" aria-labelledby="deleteProjetModalLabel" aria-hidden="true" [ngClass]="{'show d-block': showDeleteProjetModal}" *ngIf="showDeleteProjetModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteProjetModalLabel">Confirmer la suppression</h5>
+                        <button type="button" class="btn-close" aria-label="Close" (click)="closeDeleteProjetModal()"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Êtes-vous sûr de vouloir supprimer le projet <strong>{{deleteProjetItem.titre}}</strong> ?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" (click)="confirmDeleteProjet()">Supprimer</button>
+                        <button type="button" class="btn btn-secondary" (click)="closeDeleteProjetModal()">Annuler</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-fluid" id="mentions-legales">
+        <h2>Mentions légales</h2>
+        <div class="table-responsive">
+            <table class="table table-striped align-middle">
+                <thead>
+                    <tr>
+                        <th>reference</th>
+                        <th>contenu</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of mentionsLegales">
+                        <td>{{item.reference}}</td>
+                        <td>{{item.contenu}}</td>
+                        <td class="text-center">
+                            <button class="btn btn-link p-1" title="Éditer" (click)="openEditModal(item)"><i class="bi bi-pencil"></i></button>
+                        </td>
+                    </tr>
+                </tbody>                
+            </table>
+        </div>
+    </section>
+</main>

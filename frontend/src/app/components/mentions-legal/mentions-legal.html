@@ -1,0 +1,82 @@
+<app-header></app-header>
+<main>
+    <section class="container-fluid py-5 mt-5 mb-5 align-items-center justify-content-center flex-column d-flex">
+        <h1 class="text-color-primary">Mentions légales</h1>
+        <div class="container my-4">
+            <h2>Identifications de l'association</h2>
+            <div class="justify-content-center d-flex text-center mb-4">
+                Junior MIAGE Concept Nice
+                <br>
+                1645 Route des Lucioles, 06410 Biot
+                <br>
+                Association régie par la loi 1901, membre de la Confédération Nationale des Juniors Entreprises.
+            </div>
+            <div class="mx-4">
+                <table class="table table-bordered">
+                    <tr><td>N°SIRET:</td><td>501 587 398 00022</td></tr>
+                    <tr><td>APE:</td><td>9499Z</td></tr>
+                    <tr><td>N°TVA:</td><td>FR42501587398</td></tr>
+                    <tr><td>Mail:</td><td>contact&#64;juniormiageconcept.com</td></tr>
+                    <tr><td>Téléphone:</td><td>04 89 15 42 31</td></tr>
+                    <tr><td>Président: </td><td>{{PresidentName}}/{{PresidentEmail}}</td></tr>
+                </table>
+            </div>    
+        </div>
+
+        <div class="container">
+            <h2>Responsable du site internet</h2>
+            <span>{{PresidentName}} / {{PresidentEmail}}</span>
+        </div>
+
+        <div class="container">
+            <h2>Informations relatives à l’hébergeur</h2>
+            <div class="mx-4">
+                <table class="table table-bordered m-2 container">
+                    <tr><td>Hebergeur:</td><td></td>{{HebergerName}}</tr>
+                    <tr><td>Datacenter:</td><td></td>{{HebergerAddress}}</tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="container">
+            <h2>Informations relatives aux Données Personnelles</h2>
+            <div class="container">
+                <h3>Finalité de la collecte des données</h3>
+                <p>Les données collectées via le formulaire de contact sont utilisées uniquement pour répondre aux messages envoyés par les utilisateurs. Aucune autre exploitation commerciale n’est effectuée avec ces données.</p>
+            </div>
+
+            <div class="container">
+                <h3>Type de données collectées</h3>
+                <p>Nous collectons uniquement les informations nécessaires à la prise de contact (nom, adresse email, téléphone, message).</p>
+            </div>
+
+            <div class="container">
+                <h3>Base légale du traitement</h3>
+                <p>Le traitement des données se base sur le consentement explicite de l’utilisateur. En soumettant le formulaire de contact, l’utilisateur accepte que ses données soient utilisées pour répondre à sa demande.</p>
+            </div>
+            <div class="container">
+                <h3>Durée de conservation des données</h3>
+                <p>Les données collectées via le formulaire de contact sont conservées le temps nécessaire pour traiter la demande et au maximum 1 an après l’échange.</p>
+            </div>
+            <div class="container">
+                <h3>Droits des utilisateurs</h3>
+                <p>Conformément au RGPD, les utilisateurs disposent d’un droit d’accès, de rectification, d’effacement et de limitation du traitement de leurs données. Pour exercer ces droits, ils peuvent envoyer un email à contact&#64;juniormiageconcept.com.</p>
+            </div>
+            <div class="container">
+                <h3>Destinataires des données</h3>
+                <p>Les données collectées sont accessibles uniquement aux membres de Junior MIAGE Concept Nice responsables de répondre aux demandes via le formulaire de contact. Aucune donnée n’est partagée avec des tiers sans l’accord préalable des utilisateurs.</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <h2>Responsabilité</h2>
+            <p>Junior MIAGE Concept Nice ne saurait être tenue responsable des dommages directs ou indirects résultant de l’utilisation de ce site vitrine. Le site contient des liens vers des sites tiers, pour lesquels Junior MIAGE Concept Nice décline toute responsabilité.</p>
+        </div>
+
+        <div class="container">
+            <h2>Propriété intellectuelle</h2>
+            <p>Ce site et l’ensemble de son contenu (textes, images, logos, graphismes, etc.) sont protégés par le droit d’auteur. Toute reproduction, modification, ou utilisation non autorisée de ces éléments est interdite sans l’accord préalable de Junior MIAGE Concept Nice.</p>
+        </div>
+    </section>
+</main>
+<app-footer></app-footer>

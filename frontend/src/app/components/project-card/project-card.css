@@ -1,0 +1,24 @@
+/* Ellipsis for long description */
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  max-width: 100%;
+}
+.project-tag-badge {
+  background: var(--primary-color, #007bff);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-top-right-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  top: 20px;
+  left: 0px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  min-width: 80px;
+  display: inline-block;
+  z-index: 2;
+}

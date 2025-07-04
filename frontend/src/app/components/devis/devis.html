@@ -1,0 +1,162 @@
+<app-header></app-header>
+<main>
+  <section class="container mt-5 my-5 py-5"fadeInOnLoad>
+    <h2 class="text-color-primary">Demande de devis</h2>
+    <p>Veuillez remplir le formulaire ci-dessous pour demander un devis.</p>
+    <span> Étape {{ currentStep }} / 3</span>
+    <div class="progress mb-4">
+      <div
+        class="bg-color-primary progress-bar"
+        role="progressbar"
+        [style.width.%]="(currentStep / 3) * 100"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-label="progress bar"
+      >
+      <span class="visually-hidden">progress bar</span>
+      </div>
+    </div>
+    <form [formGroup]="devisForm" (ngSubmit)="onSubmit()" class="container mt-4">
+      <!-- Étape 1 -->
+      <div *ngIf="currentStep === 1">
+        <div class="mb-4 fw-bold">Informations personnelles</div>
+        <div formGroupName="personal">
+          <div class="mb-3">
+            <label for="nom">Nom</label>
+            <input class="form-control" id="nom" formControlName="nom">
+            <div *ngIf="personal.get('nom')?.touched && personal.get('nom')?.invalid" class="text-danger">Nom requis</div>
+          </div>
+          <div class="mb-3">
+            <label for="prenom">Prénom</label>
+            <input class="form-control" id="prenom" formControlName="prenom">
+            <div *ngIf="personal.get('prenom')?.touched && personal.get('prenom')?.invalid" class="text-danger">Prénom requis</div>
+          </div>
+          <div class="mb-3">
+            <label for="email">Email</label>
+            <input class="form-control" id="email" formControlName="email" placeholder="votre@email.com" type="email">
+            <div *ngIf="personal.get('email')?.touched && personal.get('email')?.invalid" class="text-danger">Email valide requis</div>
+          </div>
+          <div class="mb-3">
+            <label for="tel">Numéro de téléphone</label>
+            <input class="form-control" id="tel" formControlName="telephone" type="tel">
+            <div *ngIf="personal.get('telephone')?.touched && personal.get('telephone')?.invalid" class="text-danger">Numéro de téléphone requis</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="typeEntreprise">Type d'entreprise</label>
+            <select id="typeEntreprise" class="form-select" formControlName="typeEntreprise" required>
+              <option value="" disabled selected hidden>Choisissez un type</option>
+              <option value="particulier">Particulier</option>
+              <option value="tpe">Très petite entreprise</option>
+              <option value="pme">Petite et moyenne entreprise</option>
+              <option value="eti">Entreprise de taille intermédiaire</option>
+              <option value="ge">Grande entreprise</option>
+              <option value="association">Association</option>
+              <option value="publique">structure publique</option>
+            </select>
+            <div *ngIf="personal.get('typeEntreprise')?.touched && personal.get('typeEntreprise')?.invalid" class="text-danger">
+              Type d'entreprise requis
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="loc">Localisation</label>
+            <input id="loc" class="form-control" formControlName="localisation" type="text">
+            <div *ngIf="personal.get('localisation')?.touched && personal.get('localisation')?.invalid" class="text-danger">Localisation requise</div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary float-start" (click)="nextStep()">Suivant</button>
+      </div>
+
+      <!-- Étape 2 -->
+      <div *ngIf="currentStep === 2">
+        <div class="fw-bold mb-4">Détails du projet</div>
+        <div formGroupName="project">
+          <div class="mb-3">
+            <label>Sujet</label>
+            <select class="form-select" formControlName="sujet">
+              <option value="" disabled selected hidden>Choisissez un sujet</option>
+              <option value="site_internet">Site internet</option>
+              <option value="application_mobile">Application mobile</option>
+              <option value="ecommerce">E-commerce</option>
+              <option value="marketing_digital">Marketing digital</option>
+              <option value="autre">Autre</option>
+            </select>
+            <div *ngIf="project.get('sujet')?.touched && project.get('sujet')?.invalid" class="text-danger">Sujet requis</div>
+          </div>
+          <div class="mb-3">
+            <label>Budget</label>
+            <input class="form-control" formControlName="budget">
+            <div *ngIf="project.get('budget')?.touched && project.get('budget')?.invalid" class="text-danger">Budget requis</div>
+          </div>
+          <div class="mb-3">
+            <label>Délai souhaité</label>
+            <input class="form-control" formControlName="delai">
+            <div *ngIf="project.get('delai')?.touched && project.get('delai')?.invalid" class="text-danger">Délai requis</div>
+          </div>
+          <div class="mb-3">
+            <label>Description</label>
+            <textarea class="form-control" formControlName="description"></textarea>
+            <div *ngIf="project.get('description')?.touched && project.get('description')?.invalid" class="text-danger">Description requise</div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-secondary me-2" (click)="prevStep()">Précédent</button>
+        <button type="button" class="btn btn-primary" (click)="nextStep()">Suivant</button>
+      </div>
+
+      <!-- Étape 3 -->
+      <div *ngIf="currentStep === 3">
+        <div class="fw-bold mb-4">Confirmation</div>
+        <!-- Review Section -->
+        <div class="mb-4">
+          <h5>Récapitulatif de votre demande</h5>
+          <ul class="list-group mb-3">
+            <li class="list-group-item"><strong>Nom :</strong> {{ personal.get('nom')?.value }}</li>
+            <li class="list-group-item"><strong>Prénom :</strong> {{ personal.get('prenom')?.value }}</li>
+            <li class="list-group-item"><strong>Email :</strong> {{ personal.get('email')?.value }}</li>
+            <li class="list-group-item"><strong>Téléphone :</strong> {{ personal.get('telephone')?.value }}</li>
+            <li class="list-group-item"><strong>Type d'entreprise :</strong> {{ personal.get('typeEntreprise')?.value }}</li>
+            <li class="list-group-item"><strong>Localisation :</strong> {{ personal.get('localisation')?.value }}</li>
+            <li class="list-group-item"><strong>Sujet :</strong> {{ project.get('sujet')?.value }}</li>
+            <li class="list-group-item"><strong>Budget :</strong> {{ project.get('budget')?.value }}</li>
+            <li class="list-group-item"><strong>Délai :</strong> {{ project.get('delai')?.value }}</li>
+            <li class="list-group-item"><strong>Description :</strong> {{ project.get('description')?.value }}</li>
+            <li class="list-group-item"><strong>Message complémentaire :</strong> {{ confirmation.get('confirmationMessage')?.value }}</li>
+          </ul>
+        </div>
+        <div formGroupName="confirmation">
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="acceptTerms" formControlName="acceptTerms">
+            <label class="form-check-label" for="acceptTerms">
+              J'accepte les conditions générales d'utilisation
+            </label>
+            <div *ngIf="confirmation.get('acceptTerms')?.touched && confirmation.get('acceptTerms')?.invalid" class="text-danger">
+              Vous devez accepter les conditions pour valider.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label>Message complémentaire (optionnel)</label>
+            <textarea class="form-control" formControlName="confirmationMessage"></textarea>
+          </div>
+        </div>
+        <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
+          {{ successMessage }}
+          <button type="button" class="btn-close" (click)="successMessage = null"></button>
+        </div>
+        <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{ errorMessage }}
+          <button type="button" class="btn-close" (click)="errorMessage = null"></button>
+        </div>
+        <ng-container *ngIf="!successMessage">
+          <button type="button" class="btn btn-secondary me-2" (click)="prevStep()">Précédent</button>
+          <button type="submit" class="btn btn-success">Envoyer</button>
+        </ng-container>
+        <ng-container *ngIf="successMessage">
+          <button type="button" class="btn btn-outline-primary me-2" (click)="goHome()">Revenir à l'accueil</button>
+          <button type="button" class="btn btn-outline-success" (click)="resetForm()">Faire un nouveau devis</button>
+        </ng-container>
+      </div>
+    </form>
+  </section>
+</main>
+
+<app-footer></app-footer>
