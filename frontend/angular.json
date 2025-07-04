@@ -29,7 +29,7 @@
             ],
             "server": "src/main.server.ts",
             
-            ,"outputPath": "dist/frontend"
+            "outputPath": "dist/frontend"
             ,"baseHref": "/matthisdom.github.io/"
             ,"deployUrl": "/matthisdom.github.io/"
           },
